@@ -1653,22 +1653,23 @@ if __name__ == "__main__":
 # -------------------------------------------------------------------------------------------------------------------------------------------------
   print("Running Main Program...")
   channels_to_scan = {
-                       'Nueral Nine' : 'https://www.youtube.com/@NeuralNine'
-                      ,'Michael Knowles' : 'https://www.youtube.com/@MichaelKnowles'
-                      ,'Ben Shapiro' : 'https://www.youtube.com/@BenShapiro'
-                      ,'The Rubin Report' : 'https://www.youtube.com/@RubinReport'
-                      ,'Nick Freitas' : 'https://www.youtube.com/@Nickjfreitas'
-                      ,'Louis Rossmann' : 'https://www.youtube.com/@rossmanngroup'
-                      ,'LilAggy' : 'https://www.youtube.com/@LilAggy'
-                      ,'Network Chuck' : 'https://www.youtube.com/@NetworkChuck'
-                      ,'Hardware Haven' : 'https://www.youtube.com/@HardwareHaven'
-                      ,'The Backlogs' : 'https://www.youtube.com/@TheBacklogs'
-                      ,'Tango Tek' : 'https://www.youtube.com/@TangoTekLP'
-                      ,'Legal Eagle' : 'https://www.youtube.com/@LegalEagle'
-                      ,'Chris Titus Tech' : 'https://www.youtube.com/@ChrisTitusTech'
-                      ,'Gaming Wins' : 'https://www.youtube.com/@GamingWins'
-                      ,'Cinema Sins' : 'https://www.youtube.com/@CinemaSins'
-                      ,'Cinema Wins' : 'https://www.youtube.com/@CinemaWins'
+                      'Nueral Nine' : 'https://www.youtube.com/@NeuralNine',
+                      'Michael Knowles' : 'https://www.youtube.com/@MichaelKnowles',
+                      'Ben Shapiro' : 'https://www.youtube.com/@BenShapiro',
+                      'The Rubin Report' : 'https://www.youtube.com/@RubinReport',
+                      'Nick Freitas' : 'https://www.youtube.com/@Nickjfreitas',
+                      'Louis Rossmann' : 'https://www.youtube.com/@rossmanngroup',
+                      'LilAggy' : 'https://www.youtube.com/@LilAggy',
+                      'Network Chuck' : 'https://www.youtube.com/@NetworkChuck',
+                      'Hardware Haven' : 'https://www.youtube.com/@HardwareHaven',
+                      'The Backlogs' : 'https://www.youtube.com/@TheBacklogs',
+                      'Tango Tek' : 'https://www.youtube.com/@TangoTekLP',
+                      'Legal Eagle' : 'https://www.youtube.com/@LegalEagle',
+                      'Chris Titus Tech' : 'https://www.youtube.com/@ChrisTitusTech',
+                      'Gaming Wins' : 'https://www.youtube.com/@GamingWins',
+                      'Cinema Sins' : 'https://www.youtube.com/@CinemaSins',
+                      'Cinema Wins' : 'https://www.youtube.com/@CinemaWins',
+                      'MKBHD' : 'https://www.youtube.com/@mkbhd',
                       }
   for channel in channels_to_scan:
     try:
