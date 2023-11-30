@@ -1653,19 +1653,23 @@ if __name__ == "__main__":
 # -------------------------------------------------------------------------------------------------------------------------------------------------
   print("Running Main Program...")
   channels_to_scan = {
-                      
-                      'LTT' : 'https://www.youtube.com/@LinusTechTips'
+                      'Nueral Nine' : 'https://www.youtube.com/@NeuralNine'
+                      ,'LTT' : 'https://www.youtube.com/@LinusTechTips'
                       ,'Michael Knowles' : 'https://www.youtube.com/@MichaelKnowles'
                       ,'Ben Shapiro' : 'https://www.youtube.com/@BenShapiro'
                       ,'The Rubin Report' : 'https://www.youtube.com/@RubinReport'
                       ,'Louis Rossmann' : 'https://www.youtube.com/@rossmanngroup'
+                      ,'LilAggy' : 'https://www.youtube.com/@LilAggy'
+                      ,'Network Chuck' : 'https://www.youtube.com/@NetworkChuck'
+                      ,'Hardware Haven' : 'https://www.youtube.com/@HardwareHaven'
+                      ,'The Backlogs' : 'https://www.youtube.com/@TheBacklogs'
+                      ,'Tango Tek' : 'https://www.youtube.com/@TangoTekLP'
+                      ,'Legal Eagle' : 'https://www.youtube.com/@LegalEagle'
+                      ,'Chris Titus Tech' : 'https://www.youtube.com/@ChrisTitusTech'
                       }
   for channel in channels_to_scan:
     try:
-      #remind()
-      
-      
-          main(channel_to_scan=channels_to_scan[channel])
+      main(channel_to_scan=channels_to_scan[channel])
 
 
     except SystemExit:
