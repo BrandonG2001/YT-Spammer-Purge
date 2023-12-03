@@ -1645,44 +1645,13 @@ def main(channel_to_scan):
   continueRunning = True
   while continueRunning == True:
     continueRunning = primaryInstance(miscData)
-
-
-# Runs the program
-if __name__ == "__main__":
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------
-  print("Running Main Program...")
-  channels_to_scan = {
-                      'Nueral Nine' : 'https://www.youtube.com/@NeuralNine',
-                      'Michael Knowles' : 'https://www.youtube.com/@MichaelKnowles',
-                      'Ben Shapiro' : 'https://www.youtube.com/@BenShapiro',
-                      'The Rubin Report' : 'https://www.youtube.com/@RubinReport',
-                      'Andrew Klavan' : 'https://www.youtube.com/@AndrewKlavan',
-                      'Comments Section with Brett Cooper' : 'https://www.youtube.com/@TheCommentsSection',
-                      'Nick Freitas' : 'https://www.youtube.com/@Nickjfreitas',
-                      'Louis Rossmann' : 'https://www.youtube.com/@rossmanngroup',
-                      'LilAggy' : 'https://www.youtube.com/@LilAggy',
-                      'Network Chuck' : 'https://www.youtube.com/@NetworkChuck',
-                      'Hardware Haven' : 'https://www.youtube.com/@HardwareHaven',
-                      'The Backlogs' : 'https://www.youtube.com/@TheBacklogs',
-                      #'Tango Tek' : 'https://www.youtube.com/@TangoTekLP',      # needs testing, comes up as backpack studios
-                      #'Legal Eagle' : 'https://www.youtube.com/@LegalEagle',
-                      'Chris Titus Tech' : 'https://www.youtube.com/@ChrisTitusTech',
-                      'Gaming Wins' : 'https://www.youtube.com/@GamingWins',
-                      'Cinema Sins' : 'https://www.youtube.com/@CinemaSins',
-                      'Cinema Wins' : 'https://www.youtube.com/@CinemaWins',
-                      #'MKBHD' : 'https://www.youtube.com/@mkbhd',
-                      #'Forbes' : 'https://www.youtube.com/@ForbesBreakingNews',
-                      'Jayz Two Cents' : 'https://www.youtube.com/@Jayztwocents',
-                      'Doctor Mike' : 'https://www.youtube.com/@DoctorMike',
-                      'Gabriel Iglesias' : 'https://www.youtube.com/@fluffyguy',
-                      'Prime Video' : 'https://www.youtube.com/@PrimeVideo',     
-                      }
-  for channel in channels_to_scan:
+    
+    
+    
+def run_purger_on_dict(channel_dict):   
+  for channel in channel_dict:
     try:
-      main(channel_to_scan=channels_to_scan[channel])
-
-
+      main(channel_to_scan=channel_dict[channel])
     except SystemExit:
       sys.exit()
     except HttpError as hx:
@@ -1719,6 +1688,7 @@ if __name__ == "__main__":
         print("consider posting a bug report on the GitHub issues page, and include the above error info.")
         print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
         input("\n Press Enter to Exit...")
+        sys.exit()
     except KeyError as kx:
       traceback.print_exc()
       print("------------------------------------------------")
@@ -1731,6 +1701,7 @@ if __name__ == "__main__":
         print(f"please post a {F.LIGHTYELLOW_EX}bug report{S.R} on the GitHub issues page, and include the above error info.")
       print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
       input("\n Press Enter to Exit...")
+      sys.exit()
     except TypeError:
       traceback.print_exc()
       print("------------------------------------------------")
@@ -1738,6 +1709,7 @@ if __name__ == "__main__":
       print(f"please post a {F.LIGHTYELLOW_EX}bug report{S.R} on the GitHub issues page, and include the above error info.")
       print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
       input("\n Press Enter to Exit...")
+      sys.exit()
     except KeyboardInterrupt:
       print("\n\nProcess Cancelled via Keyboard Shortcut")
       sys.exit()
@@ -1749,5 +1721,52 @@ if __name__ == "__main__":
       print("on the GitHub issues page, and include the above error info.")
       print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
       input("\n Press Enter to Exit...")
+      sys.exit()
     else:
       print(f"\nFinished Executing Spam for {channel}")
+
+
+# Runs the program
+if __name__ == "__main__":
+  # these channels are medium/smaller channels
+  # unlikely to break api limit
+  medium_or_small_channels = {
+                      'Nueral Nine' : 'UC8wZnXYK_CGKlBcZp-GxYPA',
+                      'Michael Knowles' : 'UCr4kgAUTFkGIwlWSodg43QA',     
+                      'The Rubin Report' : 'UCJdKr0Bgd_5saZYqLCa9mng',
+                      'Andrew Klavan' : 'UCyhEZKz-LOwgktptEOh6_Iw',
+                      'Comments Section with Brett Cooper' : 'UC7bYyWCCCLHDU0ZuNzGNTtg',
+                      'Nick Freitas' : 'UCPFzA28Hw9tYDxXAeidDk6w',
+                      'Louis Rossmann' : 'UCl2mFZoRqjw_ELax4Yisf6w',
+                      'LilAggy' : 'UCx_Qyb3447P9bBaT4o8QSjQ',
+                      'Network Chuck' : 'UC9x0AN7BWHpCDHSm9NiJFJQ',
+                      'Hardware Haven' : 'UCgdTVe88YVSrOZ9qKumhULQ',
+                      'The Backlogs' : 'UC6LBo0GXFaUtf-mWccqfw-w',
+                      'Tango Tek' : 'UC4YUKOBld2PoOLzk0YZ80lw', 
+                      'Chris Titus Tech' : 'UCg6gPGh8HU2U01vaFCAsvmQ',
+                      'Gaming Wins' : 'UCaFd9J0_BdMHv_BirYJsETQ',
+                      'Cinema Sins' : 'UCYUQQgogVeQY8cMQamhHJcg',
+                      'Cinema Wins' : 'UCL8h3ri2WN_-IbviBlWtUcQ',
+                      'Jayz Two Cents' : 'UCkWQ0gDrqOCarmUKmppD7GQ',
+                      'Prime Video' : 'UCQJWtTnAHhEG5w4uN0udnUQ',     
+                      }
+  
+  # these channels are big
+  # might actually run into API concerns with these
+  bigger_yt_channels = {
+    'Ben Shapiro' : 'UCnQC_G5Xsjhp9fEJKuIcrSw',
+    'Linus Tech Tips' : 'UCXuqSBlHAE6Xw-yeJA0Tunw',
+    #'MKBHD' : 'UCBJycsmduvYEL83R_U4JriQ',  # I saw 33,399 comments on 1 run
+    'Legal Eagle' : 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q',
+    'Doctor Mike' : 'UC0QHWhjbe5fGJEPz3sVb6nw',
+  }
+  
+
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+  print("Running Main Program...")
+  
+
+  run_purger_on_dict(medium_or_small_channels)
+  run_purger_on_dict(bigger_yt_channels)
+  
+
