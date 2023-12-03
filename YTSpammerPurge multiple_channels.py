@@ -1643,10 +1643,15 @@ def main(channel_to_scan, numVideos_to_scan=1):
     
     
     
-def run_purger_on_dict(channel_dict, num_recent_vids=1):   
+def run_purger_on_dict(channel_dict):   
   for channel in channel_dict:
+    channel_id = channel_dict[channel]['Channel ID']
     try:
-      main(channel_to_scan=channel_dict[channel], numVideos_to_scan=int(num_recent_vids))
+      num_videos = channel_dict[channel]['Num Videos to scan']
+    except:
+      num_videos = 1
+    try:
+      main(channel_to_scan=channel_id, numVideos_to_scan=num_videos)
     except SystemExit:
       sys.exit()
     except HttpError as hx:
@@ -1662,10 +1667,12 @@ def run_purger_on_dict(channel_dict, num_recent_vids=1):
         print(f"If this keeps happening, consider posting a bug report on the GitHub issues page, and include the above error info.")
         print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
         input("\nPress Enter to Exit...")
+        sys.exit()
       else:
         print(f"{F.LIGHTRED_EX}Unknown Error - Code: Z-1{S.R} occurred. If this keeps happening, consider posting a bug report on the GitHub issues page, and include the above error info.")
         print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
         input("\n Press Enter to Exit...")
+        sys.exit()
     except UnboundLocalError as ux:
       traceback.print_exc()
       print("------------------------------------------------")
@@ -1676,6 +1683,7 @@ def run_purger_on_dict(channel_dict, num_recent_vids=1):
         print(f"Short Link: {F.YELLOW}TJoe.io/bug-report{S.R}")
         print("    (In the mean time, try using a previous release of the program.)")
         input("\n Press Enter to Exit...")
+        sys.exit()
       else:
         traceback.print_exc()
         print("------------------------------------------------")
@@ -1726,67 +1734,67 @@ if __name__ == "__main__":
   # these channels are medium/smaller channels (in terms of comments sections)
   # unlikely to break api limit
   regular_channels = {
-                      'Nueral Nine' : 'UC8wZnXYK_CGKlBcZp-GxYPA',
-                      'Michael Knowles' : 'UCr4kgAUTFkGIwlWSodg43QA',     
-                      'The Rubin Report' : 'UCJdKr0Bgd_5saZYqLCa9mng',
-                      'Andrew Klavan' : 'UCyhEZKz-LOwgktptEOh6_Iw',
-                      'Comments Section with Brett Cooper' : 'UC7bYyWCCCLHDU0ZuNzGNTtg',
-                      'Nick Freitas' : 'UCPFzA28Hw9tYDxXAeidDk6w',
-                      'Louis Rossmann' : 'UCl2mFZoRqjw_ELax4Yisf6w',
-                      'LilAggy' : 'UCx_Qyb3447P9bBaT4o8QSjQ',
-                      'Network Chuck' : 'UC9x0AN7BWHpCDHSm9NiJFJQ',
-                      'Hardware Haven' : 'UCgdTVe88YVSrOZ9qKumhULQ',
-                      'The Backlogs' : 'UC6LBo0GXFaUtf-mWccqfw-w',
-                      'Tango Tek' : 'UC4YUKOBld2PoOLzk0YZ80lw', 
-                      'Chris Titus Tech' : 'UCg6gPGh8HU2U01vaFCAsvmQ',
-                      'Gaming Wins' : 'UCaFd9J0_BdMHv_BirYJsETQ',
-                      'Cinema Sins' : 'UCYUQQgogVeQY8cMQamhHJcg',
-                      'Cinema Wins' : 'UCL8h3ri2WN_-IbviBlWtUcQ',
-                      'Jayz Two Cents' : 'UCkWQ0gDrqOCarmUKmppD7GQ',
-                      'Prime Video' : 'UCQJWtTnAHhEG5w4uN0udnUQ',     
+                      'Nueral Nine' : {'Channel ID' : 'UC8wZnXYK_CGKlBcZp-GxYPA', 'Num Videos to scan': 3},
+                      'Michael Knowles' : {'Channel ID' :'UCr4kgAUTFkGIwlWSodg43QA', 'Num Videos to scan': 3},     
+                      'The Rubin Report' : {'Channel ID' :'UCJdKr0Bgd_5saZYqLCa9mng', 'Num Videos to scan': 3},
+                      'Andrew Klavan' : {'Channel ID' :'UCyhEZKz-LOwgktptEOh6_Iw', 'Num Videos to scan': 3},
+                      'Comments Section with Brett Cooper' : {'Channel ID' :'UC7bYyWCCCLHDU0ZuNzGNTtg', 'Num Videos to scan': 3},
+                      'Nick Freitas' : {'Channel ID' :'UCPFzA28Hw9tYDxXAeidDk6w', 'Num Videos to scan': 3},
+                      'Louis Rossmann' : {'Channel ID' :'UCl2mFZoRqjw_ELax4Yisf6w', 'Num Videos to scan': 3},
+                      'LilAggy' : {'Channel ID' :'UCx_Qyb3447P9bBaT4o8QSjQ', 'Num Videos to scan': 3},
+                      'Network Chuck' : {'Channel ID' :'UC9x0AN7BWHpCDHSm9NiJFJQ', 'Num Videos to scan': 3},
+                      'Hardware Haven' : {'Channel ID' :'UCgdTVe88YVSrOZ9qKumhULQ', 'Num Videos to scan': 3},
+                      'The Backlogs' : {'Channel ID' :'UC6LBo0GXFaUtf-mWccqfw-w', 'Num Videos to scan': 3},
+                      'Tango Tek' : {'Channel ID' :'UC4YUKOBld2PoOLzk0YZ80lw', 'Num Videos to scan': 3}, 
+                      'Chris Titus Tech' : {'Channel ID' :'UCg6gPGh8HU2U01vaFCAsvmQ', 'Num Videos to scan': 3},
+                      'Gaming Wins' : {'Channel ID' :'UCaFd9J0_BdMHv_BirYJsETQ', 'Num Videos to scan': 3},
+                      'Cinema Sins' : {'Channel ID' :'UCYUQQgogVeQY8cMQamhHJcg', 'Num Videos to scan': 3},
+                      'Cinema Wins' : {'Channel ID' :'UCL8h3ri2WN_-IbviBlWtUcQ', 'Num Videos to scan': 3},
+                      'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 3},
+                      'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},     
                       }
   
   # these channels are bigger (expect bigger comments sections)
   # might actually run into API concerns with these
   bigger_yt_channels = {
-    'Ben Shapiro' : 'UCnQC_G5Xsjhp9fEJKuIcrSw',
-    'Linus Tech Tips' : 'UCXuqSBlHAE6Xw-yeJA0Tunw',
-    'DIY Perks' : 'UCUQo7nzH1sXVpzL92VesANw',
-    'Legal Eagle' : 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q',
-    'Doctor Mike' : 'UC0QHWhjbe5fGJEPz3sVb6nw',
-    'DIY Perks' : 'UCUQo7nzH1sXVpzL92VesANw',
+    'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 5},
+    'Linus Tech Tips' : {'Channel ID' :'UCXuqSBlHAE6Xw-yeJA0Tunw', 'Num Videos to scan': 2},
+    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 2},
+    'Legal Eagle' : {'Channel ID' :'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'Num Videos to scan': 2},
+    'Doctor Mike' : {'Channel ID' :'UC0QHWhjbe5fGJEPz3sVb6nw', 'Num Videos to scan': 2},
+    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 2},
   }
   
 
   # these will almost certainly destroy api call limit (limit to 1 vid per channel)
   very_large_channels = {
-    'MKBHD' : 'UCBJycsmduvYEL83R_U4JriQ', 
-    'MRBEAST' : 'UCX6OQ3DkcsbYNE6H8uQQuVA',
+    'MKBHD' : {'Channel ID' :'UCBJycsmduvYEL83R_U4JriQ','Num Videos to scan': 1}, 
+    'MRBEAST' : {'Channel ID' :'UCX6OQ3DkcsbYNE6H8uQQuVA','Num Videos to scan': 1},
   }
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-  reg_run = False
+  reg_run = True
 
   if reg_run:
-    run_purger_on_dict(regular_channels,num_recent_vids=3)
+    run_purger_on_dict(regular_channels)
     
     print('Completed Smaller Channels Successfully... Moving on to bigger fish.')
     time.sleep(3)
     
-    run_purger_on_dict(bigger_yt_channels, num_recent_vids=2)
+    run_purger_on_dict(bigger_yt_channels)
     
     print('Completed Bigger Channels Successfully... Moving on to bigger fish.')
     time.sleep(3)
     
-    run_purger_on_dict(very_large_channels, num_recent_vids=1)
+    run_purger_on_dict(very_large_channels)
     
     print('Completed THE LARGE Channels Successfully')
     
     
   else:  
     temp_dict = {
-      
+      #'Test' : {'Channel ID' : 'XGJGJKBXDESdbs',  'Num Videos to scan' : 3 }
     }
     if len(temp_dict) >= 1:
       run_purger_on_dict(temp_dict,num_recent_vids=1)
