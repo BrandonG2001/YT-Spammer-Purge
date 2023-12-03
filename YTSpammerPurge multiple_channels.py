@@ -1643,13 +1643,17 @@ def main(channel_to_scan, numVideos_to_scan=1):
     
     
     
-def run_purger_on_dict(channel_dict):   
+def run_purger_on_dict(channel_dict, default_numVideos=1):   
   for channel in channel_dict:
-    channel_id = channel_dict[channel]['Channel ID']
-    try:
-      num_videos = channel_dict[channel]['Num Videos to scan']
-    except:
-      num_videos = 1
+    if type(channel_dict[channel]) == dict:
+      channel_id = channel_dict[channel]['Channel ID']
+      try:
+        num_videos = channel_dict[channel]['Num Videos to scan']
+      except:
+        num_videos = default_numVideos
+    else:
+      channel_id = channel_dict[channel]
+      num_videos = default_numVideos
     try:
       main(channel_to_scan=channel_id, numVideos_to_scan=num_videos)
     except SystemExit:
@@ -1740,17 +1744,17 @@ if __name__ == "__main__":
                       'Andrew Klavan' : {'Channel ID' :'UCyhEZKz-LOwgktptEOh6_Iw', 'Num Videos to scan': 3},
                       'Comments Section with Brett Cooper' : {'Channel ID' :'UC7bYyWCCCLHDU0ZuNzGNTtg', 'Num Videos to scan': 3},
                       'Nick Freitas' : {'Channel ID' :'UCPFzA28Hw9tYDxXAeidDk6w', 'Num Videos to scan': 3},
-                      'Louis Rossmann' : {'Channel ID' :'UCl2mFZoRqjw_ELax4Yisf6w', 'Num Videos to scan': 3},
-                      'LilAggy' : {'Channel ID' :'UCx_Qyb3447P9bBaT4o8QSjQ', 'Num Videos to scan': 3},
+                      'Louis Rossmann' : {'Channel ID' :'UCl2mFZoRqjw_ELax4Yisf6w', 'Num Videos to scan': 2},
+                      'LilAggy' : {'Channel ID' :'UCx_Qyb3447P9bBaT4o8QSjQ', 'Num Videos to scan': 2},
                       'Network Chuck' : {'Channel ID' :'UC9x0AN7BWHpCDHSm9NiJFJQ', 'Num Videos to scan': 3},
                       'Hardware Haven' : {'Channel ID' :'UCgdTVe88YVSrOZ9qKumhULQ', 'Num Videos to scan': 3},
                       'The Backlogs' : {'Channel ID' :'UC6LBo0GXFaUtf-mWccqfw-w', 'Num Videos to scan': 3},
-                      'Tango Tek' : {'Channel ID' :'UC4YUKOBld2PoOLzk0YZ80lw', 'Num Videos to scan': 3}, 
-                      'Chris Titus Tech' : {'Channel ID' :'UCg6gPGh8HU2U01vaFCAsvmQ', 'Num Videos to scan': 3},
-                      'Gaming Wins' : {'Channel ID' :'UCaFd9J0_BdMHv_BirYJsETQ', 'Num Videos to scan': 3},
-                      'Cinema Sins' : {'Channel ID' :'UCYUQQgogVeQY8cMQamhHJcg', 'Num Videos to scan': 3},
-                      'Cinema Wins' : {'Channel ID' :'UCL8h3ri2WN_-IbviBlWtUcQ', 'Num Videos to scan': 3},
-                      'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 3},
+                      'Tango Tek' : {'Channel ID' :'UC4YUKOBld2PoOLzk0YZ80lw', 'Num Videos to scan': 1}, 
+                      'Chris Titus Tech' : {'Channel ID' :'UCg6gPGh8HU2U01vaFCAsvmQ', 'Num Videos to scan': 1},
+                      'Gaming Wins' : {'Channel ID' :'UCaFd9J0_BdMHv_BirYJsETQ', 'Num Videos to scan': 1},
+                      'Cinema Sins' : {'Channel ID' :'UCYUQQgogVeQY8cMQamhHJcg', 'Num Videos to scan': 1},
+                      'Cinema Wins' : {'Channel ID' :'UCL8h3ri2WN_-IbviBlWtUcQ', 'Num Videos to scan': 1},
+                      'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 2},
                       'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},     
                       }
   
@@ -1759,10 +1763,10 @@ if __name__ == "__main__":
   bigger_yt_channels = {
     'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 5},
     'Linus Tech Tips' : {'Channel ID' :'UCXuqSBlHAE6Xw-yeJA0Tunw', 'Num Videos to scan': 2},
-    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 2},
+    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
     'Legal Eagle' : {'Channel ID' :'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'Num Videos to scan': 2},
     'Doctor Mike' : {'Channel ID' :'UC0QHWhjbe5fGJEPz3sVb6nw', 'Num Videos to scan': 2},
-    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 2},
+    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
   }
   
 
@@ -1773,28 +1777,31 @@ if __name__ == "__main__":
   }
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
+  # if you are trying to add a new channel into the list
+  # but don't want to rerun the entire program to catch it up
+  one_off_run = False
+  
+  if one_off_run:
+    temp_dict = {
+      #'Test' : {'Channel ID' : 'XGJGJKBXDESdbs',  'Num Videos to scan' : 3 },
+      #'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 2},
+    }
+    if len(temp_dict) >= 1:
+      run_purger_on_dict(temp_dict, default_numVideos=1)
 
-  reg_run = True
-
-  if reg_run:
-    run_purger_on_dict(regular_channels)
+  else:
+    run_purger_on_dict(regular_channels, default_numVideos=3)
     
     print('Completed Smaller Channels Successfully... Moving on to bigger fish.')
     time.sleep(3)
     
-    run_purger_on_dict(bigger_yt_channels)
+    run_purger_on_dict(bigger_yt_channels, default_numVideos=2)
     
     print('Completed Bigger Channels Successfully... Moving on to bigger fish.')
     time.sleep(3)
     
-    run_purger_on_dict(very_large_channels)
+    run_purger_on_dict(very_large_channels, default_numVideos=1)
     
     print('Completed THE LARGE Channels Successfully')
     
     
-  else:  
-    temp_dict = {
-      #'Test' : {'Channel ID' : 'XGJGJKBXDESdbs',  'Num Videos to scan' : 3 }
-    }
-    if len(temp_dict) >= 1:
-      run_purger_on_dict(temp_dict,num_recent_vids=1)
