@@ -1751,7 +1751,7 @@ if __name__ == "__main__":
                       'Prime Video' : 'UCQJWtTnAHhEG5w4uN0udnUQ',     
                       }
   
-  # these channels are big
+  # these channels are bigger (expect bigger comments sections)
   # might actually run into API concerns with these
   bigger_yt_channels = {
     'Ben Shapiro' : 'UCnQC_G5Xsjhp9fEJKuIcrSw',
