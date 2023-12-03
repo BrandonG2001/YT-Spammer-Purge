@@ -75,7 +75,7 @@ from googleapiclient.errors import HttpError
 ##########################################################################################
 
 
-def main(channel_to_scan):
+def main(channel_to_scan, numVideos=1):
   global S
   global B
   global F
@@ -640,7 +640,7 @@ def main(channel_to_scan):
         videosToScan=[]
         validConfigSetting = True
         if config['recent_videos_amount'] != 'ask' and validConfigSetting == True:
-          numVideos = config['recent_videos_amount']
+          #numVideos = config['recent_videos_amount']
           try:
             numVideos = int(numVideos)
           except:
@@ -1648,10 +1648,10 @@ def main(channel_to_scan):
     
     
     
-def run_purger_on_dict(channel_dict):   
+def run_purger_on_dict(channel_dict, num_recent_vids=1):   
   for channel in channel_dict:
     try:
-      main(channel_to_scan=channel_dict[channel])
+      main(channel_to_scan=channel_dict[channel], numVideos=num_recent_vids)
     except SystemExit:
       sys.exit()
     except HttpError as hx:
@@ -1728,7 +1728,7 @@ def run_purger_on_dict(channel_dict):
 
 # Runs the program
 if __name__ == "__main__":
-  # these channels are medium/smaller channels
+  # these channels are medium/smaller channels (in terms of comments sections)
   # unlikely to break api limit
   medium_or_small_channels = {
                       'Nueral Nine' : 'UC8wZnXYK_CGKlBcZp-GxYPA',
@@ -1756,17 +1756,20 @@ if __name__ == "__main__":
   bigger_yt_channels = {
     'Ben Shapiro' : 'UCnQC_G5Xsjhp9fEJKuIcrSw',
     'Linus Tech Tips' : 'UCXuqSBlHAE6Xw-yeJA0Tunw',
-    #'MKBHD' : 'UCBJycsmduvYEL83R_U4JriQ',  # I saw 33,399 comments on 1 run
+    
     'Legal Eagle' : 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q',
     'Doctor Mike' : 'UC0QHWhjbe5fGJEPz3sVb6nw',
+    'MKBHD' : 'UCBJycsmduvYEL83R_U4JriQ',  # I saw 33,399 comments on 1 run (3 vids)
   }
   
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
-  print("Running Main Program...")
-  
 
-  run_purger_on_dict(medium_or_small_channels)
-  run_purger_on_dict(bigger_yt_channels)
+  run_purger_on_dict(medium_or_small_channels,num_recent_vids=3)
   
-
+  print('Completed Smaller Channels Successfully... Moving on to bigger fish.')
+  time.sleep(3)
+  
+  run_purger_on_dict(bigger_yt_channels, num_recent_vids=2)
+  
+  print('Completed Bigger Channels Successfully')
