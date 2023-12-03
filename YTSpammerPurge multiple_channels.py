@@ -75,7 +75,7 @@ from googleapiclient.errors import HttpError
 ##########################################################################################
 
 
-def main(channel_to_scan, numVideos=1):
+def main(channel_to_scan, numVideos_to_scan=1):
   global S
   global B
   global F
@@ -639,6 +639,7 @@ def main(channel_to_scan, numVideos=1):
       while validEntry == False or confirm == False:
         videosToScan=[]
         validConfigSetting = True
+        numVideos = str(numVideos_to_scan)
         if config['recent_videos_amount'] != 'ask' and validConfigSetting == True:
           #numVideos = config['recent_videos_amount']
           try:
@@ -647,12 +648,6 @@ def main(channel_to_scan, numVideos=1):
             validConfigSetting = False
             print("Invalid number entered in config file for recent_videos_amount")
             numVideos = None
-        else:
-          print(f"\nEnter the {F.YELLOW}number of most recent videos{S.R} to scan back-to-back:")
-          numVideos = input("\nNumber of Recent Videos: ")
-          print("")
-          if str(numVideos).lower() == "x":
-            return True # Return to main menu
         try:
           numVideos = int(numVideos)
           if numVideos > 0 and numVideos <= 5000:
@@ -1651,7 +1646,7 @@ def main(channel_to_scan, numVideos=1):
 def run_purger_on_dict(channel_dict, num_recent_vids=1):   
   for channel in channel_dict:
     try:
-      main(channel_to_scan=channel_dict[channel], numVideos=num_recent_vids)
+      main(channel_to_scan=channel_dict[channel], numVideos_to_scan=int(num_recent_vids))
     except SystemExit:
       sys.exit()
     except HttpError as hx:
@@ -1730,7 +1725,7 @@ def run_purger_on_dict(channel_dict, num_recent_vids=1):
 if __name__ == "__main__":
   # these channels are medium/smaller channels (in terms of comments sections)
   # unlikely to break api limit
-  medium_or_small_channels = {
+  regular_channels = {
                       'Nueral Nine' : 'UC8wZnXYK_CGKlBcZp-GxYPA',
                       'Michael Knowles' : 'UCr4kgAUTFkGIwlWSodg43QA',     
                       'The Rubin Report' : 'UCJdKr0Bgd_5saZYqLCa9mng',
@@ -1756,20 +1751,42 @@ if __name__ == "__main__":
   bigger_yt_channels = {
     'Ben Shapiro' : 'UCnQC_G5Xsjhp9fEJKuIcrSw',
     'Linus Tech Tips' : 'UCXuqSBlHAE6Xw-yeJA0Tunw',
-    
+    'DIY Perks' : 'UCUQo7nzH1sXVpzL92VesANw',
     'Legal Eagle' : 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q',
     'Doctor Mike' : 'UC0QHWhjbe5fGJEPz3sVb6nw',
-    'MKBHD' : 'UCBJycsmduvYEL83R_U4JriQ',  # I saw 33,399 comments on 1 run (3 vids)
+    'DIY Perks' : 'UCUQo7nzH1sXVpzL92VesANw',
   }
   
 
+  # these will almost certainly destroy api call limit (limit to 1 vid per channel)
+  very_large_channels = {
+    'MKBHD' : 'UCBJycsmduvYEL83R_U4JriQ', 
+    'MRBEAST' : 'UCX6OQ3DkcsbYNE6H8uQQuVA',
+  }
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
-  run_purger_on_dict(medium_or_small_channels,num_recent_vids=3)
-  
-  print('Completed Smaller Channels Successfully... Moving on to bigger fish.')
-  time.sleep(3)
-  
-  run_purger_on_dict(bigger_yt_channels, num_recent_vids=2)
-  
-  print('Completed Bigger Channels Successfully')
+
+  reg_run = False
+
+  if reg_run:
+    run_purger_on_dict(regular_channels,num_recent_vids=3)
+    
+    print('Completed Smaller Channels Successfully... Moving on to bigger fish.')
+    time.sleep(3)
+    
+    run_purger_on_dict(bigger_yt_channels, num_recent_vids=2)
+    
+    print('Completed Bigger Channels Successfully... Moving on to bigger fish.')
+    time.sleep(3)
+    
+    run_purger_on_dict(very_large_channels, num_recent_vids=1)
+    
+    print('Completed THE LARGE Channels Successfully')
+    
+    
+  else:  
+    temp_dict = {
+      
+    }
+    if len(temp_dict) >= 1:
+      run_purger_on_dict(temp_dict,num_recent_vids=1)
