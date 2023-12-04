@@ -1768,6 +1768,7 @@ if __name__ == "__main__":
                       'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
                       
                       # these will almost certainly destroy api call limit especially if multiple videos (limit to 1 vid per channel)
+                      # they are at the end so that if api limit reached, I still scanned above
                       'MKBHD' : {'Channel ID' :'UCBJycsmduvYEL83R_U4JriQ','Num Videos to scan': 1}, 
                       'MRBEAST' : {'Channel ID' :'UCX6OQ3DkcsbYNE6H8uQQuVA','Num Videos to scan': 1},                     
                       }
