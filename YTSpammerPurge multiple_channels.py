@@ -1735,9 +1735,10 @@ def run_purger_on_dict(channel_dict, default_numVideos=1):
 
 # Runs the program
 if __name__ == "__main__":
-  # these channels are medium/smaller channels (in terms of comments sections)
-  # unlikely to break api limit
-  regular_channels = {
+  
+  all_youtube_channels = {
+                      # these channels are medium/smaller channels (in terms of comments sections)
+                      # unlikely to break api limit
                       'Nueral Nine' : {'Channel ID' : 'UC8wZnXYK_CGKlBcZp-GxYPA', 'Num Videos to scan': 3},
                       'Michael Knowles' : {'Channel ID' :'UCr4kgAUTFkGIwlWSodg43QA', 'Num Videos to scan': 3},     
                       'The Rubin Report' : {'Channel ID' :'UCJdKr0Bgd_5saZYqLCa9mng', 'Num Videos to scan': 3},
@@ -1755,26 +1756,22 @@ if __name__ == "__main__":
                       'Cinema Sins' : {'Channel ID' :'UCYUQQgogVeQY8cMQamhHJcg', 'Num Videos to scan': 1},
                       'Cinema Wins' : {'Channel ID' :'UCL8h3ri2WN_-IbviBlWtUcQ', 'Num Videos to scan': 1},
                       'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 2},
-                      'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},     
+                      'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},  
+                                            
+                      # these channels are bigger (expect bigger comments sections)
+                      # might actually run into API concerns with these
+                      'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 5},
+                      'Linus Tech Tips' : {'Channel ID' :'UCXuqSBlHAE6Xw-yeJA0Tunw', 'Num Videos to scan': 2},
+                      'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
+                      'Legal Eagle' : {'Channel ID' :'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'Num Videos to scan': 2},
+                      'Doctor Mike' : {'Channel ID' :'UC0QHWhjbe5fGJEPz3sVb6nw', 'Num Videos to scan': 2},
+                      'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
+                      
+                      # these will almost certainly destroy api call limit especially if multiple videos (limit to 1 vid per channel)
+                      'MKBHD' : {'Channel ID' :'UCBJycsmduvYEL83R_U4JriQ','Num Videos to scan': 1}, 
+                      'MRBEAST' : {'Channel ID' :'UCX6OQ3DkcsbYNE6H8uQQuVA','Num Videos to scan': 1},                     
                       }
-  
-  # these channels are bigger (expect bigger comments sections)
-  # might actually run into API concerns with these
-  bigger_yt_channels = {
-    'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 5},
-    'Linus Tech Tips' : {'Channel ID' :'UCXuqSBlHAE6Xw-yeJA0Tunw', 'Num Videos to scan': 2},
-    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
-    'Legal Eagle' : {'Channel ID' :'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'Num Videos to scan': 2},
-    'Doctor Mike' : {'Channel ID' :'UC0QHWhjbe5fGJEPz3sVb6nw', 'Num Videos to scan': 2},
-    'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
-  }
-  
 
-  # these will almost certainly destroy api call limit (limit to 1 vid per channel)
-  very_large_channels = {
-    'MKBHD' : {'Channel ID' :'UCBJycsmduvYEL83R_U4JriQ','Num Videos to scan': 1}, 
-    'MRBEAST' : {'Channel ID' :'UCX6OQ3DkcsbYNE6H8uQQuVA','Num Videos to scan': 1},
-  }
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
   # if you are trying to add a new channel into the list
@@ -1790,18 +1787,7 @@ if __name__ == "__main__":
       run_purger_on_dict(temp_dict, default_numVideos=1)
 
   else:
-    run_purger_on_dict(regular_channels, default_numVideos=3)
+    run_purger_on_dict(all_youtube_channels, default_numVideos=3)
     
-    print('Completed Smaller Channels Successfully... Moving on to bigger fish.')
-    time.sleep(3)
-    
-    run_purger_on_dict(bigger_yt_channels, default_numVideos=2)
-    
-    print('Completed Bigger Channels Successfully... Moving on to bigger fish.')
-    time.sleep(3)
-    
-    run_purger_on_dict(very_large_channels, default_numVideos=1)
-    
-    print('Completed THE LARGE Channels Successfully')
     
     
