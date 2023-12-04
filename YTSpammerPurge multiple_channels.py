@@ -1736,6 +1736,12 @@ def run_purger_on_dict(channel_dict, default_numVideos=1):
 # Runs the program
 if __name__ == "__main__":
   
+  # format 1
+  #'Channel Name' : {'Channel ID' : 'UC8wZnXYkjsdbkjahbds',  'Num Videos to scan' : 3 },
+  
+  # format 2 (will default to scan 1 video)
+  # 'Channel Name' : 'UC8wZnXYkjsdbkjahbds',  
+  
   all_youtube_channels = {
                       # these channels are medium/smaller channels (in terms of comments sections)
                       # unlikely to break api limit
@@ -1788,7 +1794,7 @@ if __name__ == "__main__":
       run_purger_on_dict(temp_dict, default_numVideos=1)
 
   else:
-    run_purger_on_dict(all_youtube_channels, default_numVideos=3)
+    run_purger_on_dict(all_youtube_channels, default_numVideos=1)
     
     
     
