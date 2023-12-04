@@ -1762,7 +1762,8 @@ if __name__ == "__main__":
                       'Cinema Sins' : {'Channel ID' :'UCYUQQgogVeQY8cMQamhHJcg', 'Num Videos to scan': 1},
                       'Cinema Wins' : {'Channel ID' :'UCL8h3ri2WN_-IbviBlWtUcQ', 'Num Videos to scan': 1},
                       'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 2},
-                      'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},  
+                      'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},
+                      'Tech Linked' : {'Channel ID' : 'UCeeFfhMcJa1kjtfZAGskOCA', 'Num Videos to scan': 2},
                                             
                       # these channels are bigger (expect bigger comments sections)
                       # might actually run into API concerns with these
@@ -1783,7 +1784,7 @@ if __name__ == "__main__":
 
   # if you are trying to add a new channel into the list
   # but don't want to rerun the entire program to catch it up
-  one_off_run = False
+  one_off_run = True
   
   if one_off_run:
     temp_dict = {
@@ -1792,6 +1793,10 @@ if __name__ == "__main__":
     }
     if len(temp_dict) >= 1:
       run_purger_on_dict(temp_dict, default_numVideos=1)
+    else:
+      print()
+      print('You chose a 1-off run, but the temp dict is empty')
+      print()
 
   else:
     run_purger_on_dict(all_youtube_channels, default_numVideos=1)
