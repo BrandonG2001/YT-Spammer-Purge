@@ -1784,7 +1784,7 @@ if __name__ == "__main__":
 
   # if you are trying to add a new channel into the list
   # but don't want to rerun the entire program to catch it up
-  one_off_run = True
+  one_off_run = False
   
   if one_off_run:
     temp_dict = {
