@@ -1745,22 +1745,14 @@ if __name__ == "__main__":
   all_youtube_channels = {
                       # these channels are medium/smaller channels (in terms of comments sections)
                       # unlikely to break api limit
-                      'Nueral Nine' : {'Channel ID' : 'UC8wZnXYK_CGKlBcZp-GxYPA', 'Num Videos to scan': 3},
                       'Michael Knowles' : {'Channel ID' :'UCr4kgAUTFkGIwlWSodg43QA', 'Num Videos to scan': 3},     
                       'The Rubin Report' : {'Channel ID' :'UCJdKr0Bgd_5saZYqLCa9mng', 'Num Videos to scan': 3},
                       'Andrew Klavan' : {'Channel ID' :'UCyhEZKz-LOwgktptEOh6_Iw', 'Num Videos to scan': 3},
                       'Comments Section with Brett Cooper' : {'Channel ID' :'UC7bYyWCCCLHDU0ZuNzGNTtg', 'Num Videos to scan': 3},
                       'Nick Freitas' : {'Channel ID' :'UCPFzA28Hw9tYDxXAeidDk6w', 'Num Videos to scan': 3},
                       'Louis Rossmann' : {'Channel ID' :'UCl2mFZoRqjw_ELax4Yisf6w', 'Num Videos to scan': 2},
-                      'LilAggy' : {'Channel ID' :'UCx_Qyb3447P9bBaT4o8QSjQ', 'Num Videos to scan': 2},
-                      'Network Chuck' : {'Channel ID' :'UC9x0AN7BWHpCDHSm9NiJFJQ', 'Num Videos to scan': 3},
                       'Hardware Haven' : {'Channel ID' :'UCgdTVe88YVSrOZ9qKumhULQ', 'Num Videos to scan': 3},
-                      'The Backlogs' : {'Channel ID' :'UC6LBo0GXFaUtf-mWccqfw-w', 'Num Videos to scan': 3},
-                      'Tango Tek' : {'Channel ID' :'UC4YUKOBld2PoOLzk0YZ80lw', 'Num Videos to scan': 1}, 
                       'Chris Titus Tech' : {'Channel ID' :'UCg6gPGh8HU2U01vaFCAsvmQ', 'Num Videos to scan': 1},
-                      'Gaming Wins' : {'Channel ID' :'UCaFd9J0_BdMHv_BirYJsETQ', 'Num Videos to scan': 1},
-                      'Cinema Sins' : {'Channel ID' :'UCYUQQgogVeQY8cMQamhHJcg', 'Num Videos to scan': 1},
-                      'Cinema Wins' : {'Channel ID' :'UCL8h3ri2WN_-IbviBlWtUcQ', 'Num Videos to scan': 1},
                       'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 2},
                       'Prime Video' : {'Channel ID' :'UCQJWtTnAHhEG5w4uN0udnUQ', 'Num Videos to scan': 3},
                       'Tech Linked' : {'Channel ID' : 'UCeeFfhMcJa1kjtfZAGskOCA', 'Num Videos to scan': 2},
@@ -1769,7 +1761,6 @@ if __name__ == "__main__":
                       # might actually run into API concerns with these
                       'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 5},
                       'Linus Tech Tips' : {'Channel ID' :'UCXuqSBlHAE6Xw-yeJA0Tunw', 'Num Videos to scan': 2},
-                      'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
                       'Legal Eagle' : {'Channel ID' :'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'Num Videos to scan': 2},
                       'Doctor Mike' : {'Channel ID' :'UC0QHWhjbe5fGJEPz3sVb6nw', 'Num Videos to scan': 2},
                       'DIY Perks' : {'Channel ID' :'UCUQo7nzH1sXVpzL92VesANw', 'Num Videos to scan': 1},
@@ -1788,7 +1779,7 @@ if __name__ == "__main__":
   
   if one_off_run:
     temp_dict = {
-      #'Test' : {'Channel ID' : 'XGJGJKBXDESdbs',  'Num Videos to scan' : 3 },
+      #'Test' : {'Channel ID' : 'https://www.youtube.com/@deathbattle',  'Num Videos to scan' : 5 },
       #'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 2},
     }
     if len(temp_dict) >= 1:
