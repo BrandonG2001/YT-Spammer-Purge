@@ -1750,7 +1750,7 @@ if __name__ == "__main__":
                       'Andrew Klavan' : {'Channel ID' :'UCyhEZKz-LOwgktptEOh6_Iw', 'Num Videos to scan': 3},
                       'Comments Section with Brett Cooper' : {'Channel ID' :'UC7bYyWCCCLHDU0ZuNzGNTtg', 'Num Videos to scan': 3},
                       'Nick Freitas' : {'Channel ID' :'UCPFzA28Hw9tYDxXAeidDk6w', 'Num Videos to scan': 3},
-                      'Louis Rossmann' : {'Channel ID' :'UCl2mFZoRqjw_ELax4Yisf6w', 'Num Videos to scan': 2},
+                      'Louis Rossmann' : {'Channel ID' :'UCl2mFZoRqjw_ELax4Yisf6w', 'Num Videos to scan': 3},
                       'Hardware Haven' : {'Channel ID' :'UCgdTVe88YVSrOZ9qKumhULQ', 'Num Videos to scan': 3},
                       'Chris Titus Tech' : {'Channel ID' :'UCg6gPGh8HU2U01vaFCAsvmQ', 'Num Videos to scan': 1},
                       'Jayz Two Cents' : {'Channel ID' :'UCkWQ0gDrqOCarmUKmppD7GQ', 'Num Videos to scan': 2},
