@@ -1643,7 +1643,7 @@ def main(channel_to_scan, numVideos_to_scan=1):
     
     
     
-def run_purger_on_dict(channel_dict, default_numVideos=1):   
+def run_purger_on_dict(channel_dict: dict, default_numVideos:int=1):   
   for channel in channel_dict:
     if type(channel_dict[channel]) == dict:
       channel_id = channel_dict[channel]['Channel ID']
@@ -1782,7 +1782,7 @@ if __name__ == "__main__":
       #'Test' : {'Channel ID' : 'https://www.youtube.com/@deathbattle',  'Num Videos to scan' : 5 },
       #'Ben Shapiro' : {'Channel ID' :'UCnQC_G5Xsjhp9fEJKuIcrSw', 'Num Videos to scan': 2},
     }
-    if len(temp_dict) >= 1:
+    if len(temp_dict) > 0:
       run_purger_on_dict(temp_dict, default_numVideos=1)
     else:
       print()
