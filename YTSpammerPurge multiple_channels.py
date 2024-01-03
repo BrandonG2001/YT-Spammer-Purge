@@ -2434,11 +2434,11 @@ if __name__ == "__main__":
         # unlikely to break api limit
         "Michael Knowles": {
             "Channel ID": "UCr4kgAUTFkGIwlWSodg43QA",
-            "Num Videos to scan": 3,
+            "Num Videos to scan": 5,
         },
         "The Rubin Report": {
             "Channel ID": "UCJdKr0Bgd_5saZYqLCa9mng",
-            "Num Videos to scan": 3,
+            "Num Videos to scan": 4,
         },
         "Andrew Klavan": {
             "Channel ID": "UCyhEZKz-LOwgktptEOh6_Iw",
