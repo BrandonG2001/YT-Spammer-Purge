@@ -131,13 +131,13 @@ def main(channel_to_scan, numVideos_to_scan=1):
         },
         "Meta": {
             "VersionInfo": {"FileName": "SpamVersionInfo.json"},
-            "SpamListFolder": spamListFolder
+            "SpamListFolder": spamListFolder,
             #'LatestLocalVersion': {} # Gets added later during check, this line here for reference
         },
     }
     filterListDict = {
         "Files": {"FilterVariables": {"FileName": filterFileName}},
-        "ResourcePath": filtersFolder
+        "ResourcePath": filtersFolder,
         #'LocalVersion': {} # Gets added later during check, this line here for reference
     }
 
@@ -431,13 +431,17 @@ def main(channel_to_scan, numVideos_to_scan=1):
         matchedCommentsDict: dict  # Comments flagged by the filter
         duplicateCommentsDict: dict  # Comments flagged as duplicates
         repostedCommentsDict: dict  # Comments stolen from other users
-        otherCommentsByMatchedAuthorsDict: dict  # Comments not matched, but are by a matched author
+        otherCommentsByMatchedAuthorsDict: (
+            dict  # Comments not matched, but are by a matched author
+        )
         scannedThingsList: list  # List of posts or videos that were scanned
         spamThreadsDict: dict  # Comments flagged as parent of spam threads
         allScannedCommentsDict: dict  # All comments scanned for this instance
         vidIdDict: dict  # Contains the video ID on which each comment is found
         vidTitleDict: dict  # Contains the titles of each video ID
-        matchSamplesDict: dict  # Contains sample info for every flagged comment of all types
+        matchSamplesDict: (
+            dict  # Contains sample info for every flagged comment of all types
+        )
         authorMatchCountDict: dict  # The number of flagged comments per author
         scannedRepliesCount: int  # The current number of replies scanned so far
         scannedCommentsCount: int  # The current number of comments scanned so far
@@ -1899,7 +1903,7 @@ def main(channel_to_scan, numVideos_to_scan=1):
         exclude = False
         excludedCommentsDict = {}
         excludeDisplayString = ""
-        # If not skipped by config, ask user what to do
+        # If not skipped by config, ask user what to dore
         if confirmDelete == None and returnToMenu == False:
             # Menu for deletion mode
             validResponses = ["delete", "report", "hold", "none"]
@@ -2044,9 +2048,9 @@ def main(channel_to_scan, numVideos_to_scan=1):
                         logInfo=logInfo,
                         only=onlyBool,
                     )
-                    miscData.resources["Whitelist"][
-                        "WhitelistContents"
-                    ] = files.ingest_list_file(whitelistPathWithName, keepCase=True)
+                    miscData.resources["Whitelist"]["WhitelistContents"] = (
+                        files.ingest_list_file(whitelistPathWithName, keepCase=True)
+                    )
                     exclude = True
 
                     # Check that remaining comments list to remove is not empty
@@ -2481,7 +2485,7 @@ if __name__ == "__main__":
         },
         "Stuff Made Here": {
             "Channel ID": "UCj1VqrHhDte54oLgPG4xpuQ",
-            "Num Videos to scan": 2,
+            "Num Videos to scan": 1,
         },
         # these channels are bigger (expect bigger comments sections)
         # might actually run into API concerns with these
